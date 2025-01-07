@@ -9,6 +9,9 @@ const Home_Section = document.querySelector(".musicList");
 const search_Btn = document.querySelector(".sideNav .Search");
 const search_Section = document.querySelector(".searchSong");
 const rightClick = document.querySelector(".musicList .rightClick");
+const play = document.querySelector(".rightClick .play");
+const del = document.querySelector(".rightClick .delete");
+const loop = document.querySelector(".rightClick .loop");
 
 let musicArr = JSON.parse(localStorage.getItem("musicList")) || []; // Retrieve music list from local storage or initialize an empty array
 
@@ -39,19 +42,48 @@ function addMusicToList(name, audioURL) {
     Mlength.textContent = `${minutes}:${seconds}`; // Display duration
   });
 
-  // Add click-to-play functionality
-  newMusic.addEventListener("click", () => {
+  // Function to play music
+  function PlayMusic_Function(audioURL) {
     const audio = document.createElement("audio");
-    player.innerHTML = "";
+    player.innerHTML = ""; // Clear existing audio player
     audio.controls = true;
     audio.autoplay = true;
     player.appendChild(audio);
-    audio.src = audioURL;
+    audio.src = audioURL; // Set the audio source
+  }
+
+  // Right-click functionality
+  newMusic.addEventListener("contextmenu", (e) => {
+    e.preventDefault(); // Prevent the default context menu
+
+    // Show the custom context menu
+    rightClick.style.display = "flex";
+    rightClick.style.left = `${e.clientX - 46}px`;
+    rightClick.style.top = `${e.clientY - 46}px`;
+
+    // Handle the Delete button click
+    del.onclick = () => {
+      newMusic.remove(); // Remove the music item from the DOM
+      console.log("Removed");
+
+      // Remove the music item from the musicArr array
+      musicArr = musicArr.filter((music) => music.url !== audioURL);
+
+      // Update Local Storage
+      localStorage.setItem("musicList", JSON.stringify(musicArr));
+      rightClick.style.display = "none"; // Hide the custom context menu
+    };
+
+    // Handle the Play button click
+    play.onclick = () => {
+      PlayMusic_Function(audioURL); // Play the specific audio
+      rightClick.style.display = "none"; // Hide the custom context menu
+    };
   });
 
-  newMusic.addEventListener("contextmenu", () => {
-    console.log("Done");
-    rightClick.style.display = "flex";
+  // Hide the context menu on a general click
+  document.addEventListener("click", () => {
+    rightClick.style.display = "none";
   });
 }
 
@@ -85,11 +117,9 @@ input.addEventListener("change", (e) => {
 Home_Btn.addEventListener("click", () => {
   Home_Section.style.display = "flex";
   search_Section.style.display = "none";
-  console.log("Done 1");
 });
 
 search_Btn.addEventListener("click", () => {
   Home_Section.style.display = "none";
   search_Section.style.display = "flex";
-  console.log("Done 2");
 });

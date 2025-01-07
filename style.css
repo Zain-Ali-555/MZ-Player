@@ -29,7 +29,6 @@ body {
 }
 
 .left {
-  height: 100%;
   width: 50%;
   background-color: rgba(0, 0, 0, 0.318);
   border-radius: 20px;
@@ -73,6 +72,7 @@ body {
   display: flex;
   flex-direction: column;
   gap: 1rem;
+  overflow: auto;
 }
 
 .musicList h5 {
