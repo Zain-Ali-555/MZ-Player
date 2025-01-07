@@ -11,5 +11,49 @@ body {
 }
 
 body {
-  background: linear-gradient(90deg ,black, crimson);
+  background: linear-gradient(180deg, black, orangered);
+  color: white;
+  height: 100vh;
+  width: 100vw;
+  padding: 3rem;
+}
+
+.musicPlayer {
+  background-color: rgba(130, 127, 126, 0.326);
+  width: 100%;
+  height: 100%;
+  border-radius: 20px;
+  padding: 1rem;
+  backdrop-filter: blur(10px);
+}
+
+.left {
+  height: 100%;
+  width: 50%;
+  background-color: rgba(0, 0, 0, 0.318);
+  border-radius: 20px;
+  padding: 1rem;
+}
+
+.sideNav {
+  height: 100%;
+  width: 23%;
+  border: 2px solid rgba(255, 255, 255, 0.379);
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  border-radius: 20px;
+  padding: 0 0.5rem;
+}
+
+.sideNav h5 {
+  font-size: larger;
+  font-weight: 500;
+  margin: 1rem 0;
+  background-color: #ef400090;
+  padding: 10px;
+  border-radius: 10px;
+  width: 100%;
+  text-align: center;
+  cursor: pointer;
 }
