@@ -97,6 +97,26 @@ body {
   align-items: center;
   flex-direction: column;
   gap: 3rem;
+  position: relative;
+}
+
+.right .upload {
+  position: absolute;
+  top: 1rem;
+  right: 2rem;
+  background-color: orangered;
+  padding: 10px 35px;
+  border-radius: 0px 50% 0px 50%;
+  cursor: pointer;
+  font-weight: 600;
+  text-transform: uppercase;
+  transition: all .2s;
+}
+
+.upload:hover{
+    background-color: rgb(244, 207, 193);
+    color: orangered;
+    font-weight: 600;
 }
 
 .right .musicImg {
@@ -111,8 +131,4 @@ body {
 .musicImg img {
   width: 100%;
   object-fit: contain;
-}
-
-.controls{
-    
 }
