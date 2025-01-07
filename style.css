@@ -46,6 +46,7 @@ body {
   flex-direction: column;
   border-radius: 20px;
   padding: 0 0.5rem;
+  position: relative;
 }
 
 .sideNav h5 {
@@ -66,12 +67,12 @@ body {
 }
 
 .musicList {
-  width: 80%;
+  width: 77%;
   border-radius: 20px;
   padding: 1rem;
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 1rem;
 }
 
 .musicList h5 {
@@ -87,6 +88,61 @@ body {
 
 .musicList h5:hover {
   background-color: #f7ac9061;
+}
+
+.musicList .rightClick {
+  width: 7%;
+  border: 1.5px solid rgba(255, 255, 255, 0.379);
+  border-radius: 20px;
+  padding: 0.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  border-top-left-radius: 0;
+  position: absolute;
+  display: none;
+}
+
+.musicList .rightClick h3 {
+  background-color: rgba(255, 255, 255, 0.379);
+  backdrop-filter: blur(10px);
+  padding: 0.2rem 0rem;
+  border-radius: 20px;
+  border-top-left-radius: 0;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.3s;
+  font-weight: 100;
+}
+
+.musicList .rightClick h3:hover {
+  background-color: rgb(255, 68, 0);
+}
+
+.searchSong {
+  width: 77%;
+  display: none;
+  display: none;
+  flex-direction: column;
+}
+
+.searchSong h5 {
+  font-weight: 100;
+  font-size: larger;
+  text-align: center;
+  width: 100%;
+  margin-bottom: 1rem;
+}
+
+.searchSong input {
+  width: 80%;
+  padding: 0.5rem 1rem;
+  border-radius: 20px;
+  margin-left: 3rem;
+  background-color: #ffc2a252;
+  border: none;
+  color: white;
+  font-size: large;
 }
 
 .right {
@@ -110,13 +166,13 @@ body {
   cursor: pointer;
   font-weight: 600;
   text-transform: uppercase;
-  transition: all .2s;
+  transition: all 0.2s;
 }
 
-.upload:hover{
-    background-color: rgb(244, 207, 193);
-    color: orangered;
-    font-weight: 600;
+.upload:hover {
+  background-color: rgb(244, 207, 193);
+  color: orangered;
+  font-weight: 600;
 }
 
 .right .musicImg {

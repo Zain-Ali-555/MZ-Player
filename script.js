@@ -2,8 +2,13 @@ console.log("Asslamualikum kia Hal Hia");
 
 const upload = document.querySelector(".upload");
 const input = document.querySelector(".upload input");
-const List = document.querySelector(".musicList");
 const player = document.querySelector(".controls");
+const side_Nav = document.querySelector(".sideNav");
+const Home_Btn = document.querySelector(".sideNav .Home");
+const Home_Section = document.querySelector(".musicList");
+const search_Btn = document.querySelector(".sideNav .Search");
+const search_Section = document.querySelector(".searchSong");
+const rightClick = document.querySelector(".musicList .rightClick");
 
 let musicArr = JSON.parse(localStorage.getItem("musicList")) || []; // Retrieve music list from local storage or initialize an empty array
 
@@ -21,7 +26,7 @@ function addMusicToList(name, audioURL) {
 
   newMusic.appendChild(Mname);
   newMusic.appendChild(Mlength);
-  List.appendChild(newMusic);
+  Home_Section.appendChild(newMusic);
 
   // Calculate and display duration using a temporary audio element
   const tempAudio = new Audio(audioURL);
@@ -42,6 +47,11 @@ function addMusicToList(name, audioURL) {
     audio.autoplay = true;
     player.appendChild(audio);
     audio.src = audioURL;
+  });
+
+  newMusic.addEventListener("contextmenu", () => {
+    console.log("Done");
+    rightClick.style.display = "flex";
   });
 }
 
@@ -70,4 +80,16 @@ input.addEventListener("change", (e) => {
   } else {
     console.log("Error: Please upload a valid audio file");
   }
+});
+
+Home_Btn.addEventListener("click", () => {
+  Home_Section.style.display = "flex";
+  search_Section.style.display = "none";
+  console.log("Done 1");
+});
+
+search_Btn.addEventListener("click", () => {
+  Home_Section.style.display = "none";
+  search_Section.style.display = "flex";
+  console.log("Done 2");
 });
